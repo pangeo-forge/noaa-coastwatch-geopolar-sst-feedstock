@@ -37,6 +37,7 @@ time_concat_dim = ConcatDim("time", dates, nitems_per_file=1)
 pattern = FilePattern(make_url, time_concat_dim)
 
 recipe = XarrayZarrRecipe(
-    pattern, 
-    target_chunks={'time': 2, 'lat': 1800, 'lon': 7200}
+    pattern,
+    inputs_per_chunk=2,
+    target_chunks={'time': 2, 'lat': 1800, 'lon': 7200},
     )
